@@ -1,6 +1,5 @@
 import { HiLockClosed } from "react-icons/hi";
 import { IoMail } from "react-icons/io5";
-
 import { Link } from "react-router-dom";
 import GoogleLogin from "../../../components/GoogleLogin";
 import LoginLottie from "../../../components/LoginLottie";
@@ -13,7 +12,7 @@ const Login = () => {
           <title>Login</title>
         </Helmet>
         {/* Left Side */}
-        <div className="md:w-1/2 w-full overflow-hidden z-50 relative ">
+        <div className="md:w-1/2  overflow-hidden z-50 relative rounded-l-2xl">
           <LoginLottie />
         </div>
 

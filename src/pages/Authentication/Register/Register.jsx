@@ -1,14 +1,11 @@
 import { FaEnvelope, FaLock, FaUserAlt } from "react-icons/fa";
 import { Helmet } from "react-helmet";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import { Link } from "react-router-dom";
 import GoogleLogin from "../../../components/GoogleLogin";
 import LoginLottie from "../../../components/LoginLottie";
 
 const Register = () => {
-  AOS.init();
   return (
     <section className="min-h-[calc(100vh-288px)] flex justify-center items-center">
       <div className="flex flex-col md:flex-row h-screen md:h-auto container mx-auto shadow-xl rounded-2xl overflow-hidden ">
@@ -16,7 +13,7 @@ const Register = () => {
           <title>Register</title>
         </Helmet>
         {/* Left Side - Full-Screen Lottie */}
-        <div className="w-full  md:w-1/2  bg-gray-100">
+        <div className="md:w-1/2  overflow-hidden z-50 relative ">
           <LoginLottie />
         </div>
 
@@ -74,7 +71,7 @@ const Register = () => {
             </div>
 
             {/* Register Button */}
-            <button className="w-full bg-blue-600 text-white py-2 rounded-md mb-4 hover:bg-blue-700">
+            <button className="w-full bg-blue-600 text-white py-2 rounded-md mb-4 hover:bg-blue-700 btn">
               Register
             </button>
 
