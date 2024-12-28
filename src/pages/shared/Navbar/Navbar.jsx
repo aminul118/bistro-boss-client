@@ -27,8 +27,8 @@ const Navbar = () => {
   );
 
   return (
-    <header className="fixed z-50 w-full">
-      <div className="navbar container mx-auto  bg-black opacity bg-opacity-40">
+    <header className="fixed z-50 w-full ">
+      <div className="navbar container mx-auto  backdrop-blur-xl">
         {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">

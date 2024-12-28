@@ -12,12 +12,10 @@ import SectionTitle from "../../../components/SectionTitle";
 const Category = () => {
   return (
     <section>
-      <SectionTitle
-        subtitle="From 11:00am to 10:00pm"
-        title="ORDER ONLINE"
-      />
+      <SectionTitle subtitle="From 11:00am to 10:00pm" title="ORDER ONLINE" />
       <Swiper
-        spaceBetween={10}
+        slidesPerView={2}
+        spaceBetween={5}
         pagination={{
           clickable: true,
         }}
@@ -36,7 +34,7 @@ const Category = () => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper "
+        className="my-8"
       >
         <SwiperSlide>
           <img src={slide1} />
