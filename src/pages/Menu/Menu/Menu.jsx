@@ -1,21 +1,23 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../../shared/Cover/COver";
 import SectionTitle from "../../../components/SectionTitle";
-import useMenu from "../../../hooks/useMenu";
 import MenuCategory from "../MenuCategory/MenuCategory";
 import menuImg from "../../../assets/menu/banner3.jpg";
 import desertImg from "../../../assets/menu/dessert-bg.jpeg";
 import pizzaImg from "../../../assets/menu/pizza-bg.jpg";
 import saladImg from "../../../assets/menu/salad-bg.jpg";
 import soupImg from "../../../assets/menu/soup-bg.jpg";
+import useMenuCategory from "../../../hooks/useMenuCategory";
 
 const Menu = () => {
-  const [menu] = useMenu();
-  const offered = menu.filter((item) => item.category === "offered");
-  const dessert = menu.filter((item) => item.category === "dessert");
-  const pizza = menu.filter((item) => item.category === "pizza");
-  const salad = menu.filter((item) => item.category === "salad");
-  const soup = menu.filter((item) => item.category === "soup");
+  //   const [menu] = useMenu();
+  //   const offered = menu.filter((item) => item.category === "offered");
+  //   const dessert = menu.filter((item) => item.category === "dessert");
+  //   const pizza = menu.filter((item) => item.category === "pizza");
+  //   const salad = menu.filter((item) => item.category === "salad");
+  //   const soup = menu.filter((item) => item.category === "soup");
+  
+  const [offered, dessert, pizza, salad, soup] = useMenuCategory();
 
   return (
     <div>

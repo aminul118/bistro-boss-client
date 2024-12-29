@@ -9,6 +9,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
+      <li>
+        <NavLink to="/order">Order Food</NavLink>
+      </li>
     </>
   );
 
@@ -27,7 +30,7 @@ const Navbar = () => {
   );
 
   return (
-    <header className="fixed z-50 w-full ">
+    <header  className="fixed z-50 w-full ">
       <div className="navbar container mx-auto  backdrop-blur-xl">
         {/* Navbar Start */}
         <div className="navbar-start">
