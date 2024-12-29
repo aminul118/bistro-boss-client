@@ -3,7 +3,7 @@ import { IoMail } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import GoogleLogin from "../../../components/GoogleLogin";
 import LoginLottie from "../../../components/LoginLottie";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 const Login = () => {
   return (
     <section className="min-h-[calc(100vh-288px)] flex justify-center items-center">
