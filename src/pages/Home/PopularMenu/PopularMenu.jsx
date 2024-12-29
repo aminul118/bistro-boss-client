@@ -13,12 +13,17 @@ const PopularMenu = () => {
       });
   }, []);
   return (
-    <section>
+    <section >
       <SectionTitle subtitle="Popular Menu" title="FROM OUR MENU" />
       <div className="grid md:grid-cols-2 gap-10 py-8">
         {menu.map((item) => (
           <MenuItem item={item} key={item._id} />
         ))}
+      </div>
+      <div className="flex justify-center">
+        <button className="btn btn-outline border-0 border-b-2 text-center mb-8">
+          View all menu
+        </button>
       </div>
     </section>
   );

@@ -6,22 +6,22 @@ const Navbar = () => {
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
+      <li>
+        <NavLink to="/menu">Our Menu</NavLink>
+      </li>
     </>
   );
 
   const adminLinks = (
     <>
       <li>
-        <a className="justify-between">
-          Profile
-          <span className="badge">New</span>
-        </a>
+        <a className="justify-between">Profile</a>
       </li>
       <li>
         <a>Settings</a>
       </li>
       <li>
-        <a>Logout</a>
+        <button className="bg-base-200">Logout</button>
       </li>
     </>
   );
@@ -59,12 +59,14 @@ const Navbar = () => {
             Bisto Boss
           </Link>
         </div>
+        <div>
+          <div className="navbar-center hidden lg:flex ">
+            <ul className="menu menu-horizontal px-1 gap-4 ">{navLinks}</ul>
+          </div>
+        </div>
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <div className="navbar-center hidden lg:flex ">
-            <ul className="menu menu-horizontal px-1 gap-4 mr-2">{navLinks}</ul>
-          </div>
           <div className="flex-none">
             <div className="dropdown dropdown-end">
               <div
