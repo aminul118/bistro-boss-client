@@ -3,13 +3,12 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import img from "../../../assets/home/chef-service.jpg";
-
 import slide1 from "../../../assets/home/slide1.jpg";
 import slide2 from "../../../assets/home/slide2.jpg";
 import slide3 from "../../../assets/home/slide3.jpg";
 import slide4 from "../../../assets/home/slide4.jpg";
 import SectionTitle from "../../../components/SectionTitle";
-import SectionBanner from "../../../components/SectionBanner";
+import Cover from "../../shared/Cover/COver";
 
 const Category = () => {
   return (
@@ -82,13 +81,13 @@ const Category = () => {
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide4} />
-          <h1 className="-mt-14 text-center text-3xl uppercase text-white">
+          <h1 className="-mt-14 text-center text-3xl uppercase text-white ">
             Desserts
           </h1>
         </SwiperSlide>
       </Swiper>
-      <SectionBanner
-        backgroundColour="bg-white"
+      <Cover
+        backgroundColour="bg-white/85"
         image={img}
         tittle="Bistro Boss"
         text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nam, odio odit natus, tempore,
