@@ -4,11 +4,16 @@ import { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useMenuCategory from "../../../hooks/useMenuCategory";
-import FoodCardContainer from "../../../components/FoodCardContainer";
+import OrderTab from "../OrderTab/OrderTab";
+import { useParams } from "react-router-dom";
 
 const Order = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const categories = ["salad", "pizza", "soup", "desert", "drink"];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [drinks, dessert, pizza, salad, soup] = useMenuCategory();
+  // console.log(initialIndex);
   return (
     <div className="mb-14">
       <Cover
@@ -29,19 +34,19 @@ const Order = () => {
           </TabList>
         </div>
         <TabPanel>
-          <FoodCardContainer item={salad} />
+          <OrderTab items={salad} />
         </TabPanel>
         <TabPanel>
-          <FoodCardContainer item={pizza} />
+          <OrderTab items={pizza} />
         </TabPanel>
         <TabPanel>
-          <FoodCardContainer item={soup} />
+          <OrderTab items={soup} />
         </TabPanel>
         <TabPanel>
-          <FoodCardContainer item={dessert} />
+          <OrderTab items={dessert} />
         </TabPanel>
         <TabPanel>
-          <FoodCardContainer item={drinks} />
+          <OrderTab items={drinks} />
         </TabPanel>
       </Tabs>
     </div>
