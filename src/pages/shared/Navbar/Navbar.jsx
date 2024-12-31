@@ -2,7 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, loading } = useAuth();
+  // console.log(loading);
   const navLinks = (
     <>
       <li>
@@ -75,7 +76,11 @@ const Navbar = () => {
         {/* Navbar End */}
         <div className="navbar-end">
           <div className="flex-none">
-            {user ? (
+            {loading ? (
+              <>
+                <span className="loading loading-ring loading-lg"></span>
+              </>
+            ) : user ? (
               <div className="dropdown dropdown-end">
                 <div
                   tabIndex={0}

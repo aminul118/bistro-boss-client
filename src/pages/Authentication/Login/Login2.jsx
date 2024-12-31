@@ -5,14 +5,19 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const Login2 = () => {
   const { login } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  // console.log(location);
+  const path = location.state || "/";
 
   useEffect(() => {
     loadCaptchaEnginge(6, "#F0F8FF00");
@@ -46,7 +51,9 @@ const Login2 = () => {
     login(email, password)
       .then((result) => {
         const user = result.user;
+        toast.success("login success");
         console.log("Logged in user:", user);
+        navigate(path);
       })
       .catch((error) => {
         console.error("Login failed:", error.message);

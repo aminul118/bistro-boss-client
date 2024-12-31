@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
+import { toast } from "react-toastify";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -38,6 +39,7 @@ const AuthProvider = ({ children }) => {
 
   // Logout
   const logOut = () => {
+    toast.success("Sign out");
     return signOut(auth);
   };
 
@@ -55,6 +57,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         // console.log("Current User:", currentUser);
         setUser(currentUser);
+        setLoading(false);
 
         // if (currentUser) {
         //   const user = currentUser.email;
@@ -74,7 +77,7 @@ const AuthProvider = ({ children }) => {
         //       // console.log("JWT ERROR:", err);
         //     });
         // }
-        console.log('User', currentUser);
+        console.log("User", currentUser);
       } else {
         // axios
         //   .post(
