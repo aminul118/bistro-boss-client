@@ -1,13 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import Login from "../pages/Authentication/Login/Login";
-import Register from "../pages/Authentication/Register/Register";
 import Home from "../pages/Home/Home/Home";
 import Menu from "../pages/Menu/Menu/menu";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Order from "../pages/Order/Order/Order";
+import Login2 from "../pages/Authentication/Login/Login2";
+import Register2 from "../pages/Authentication/Register/Register2";
 
 const Router = createBrowserRouter([
+  {
+    path: "login",
+    element: <Login2 />,
+  },
+  {
+    path: "register",
+    element: <Register2 />,
+  },
   {
     path: "/",
     element: <MainLayout />,
@@ -24,15 +32,6 @@ const Router = createBrowserRouter([
       {
         path: "order/:category",
         element: <Order />,
-      },
-
-      {
-        path: "register",
-        element: <Register />,
-      },
-      {
-        path: "login",
-        element: <Login />,
       },
     ],
   },

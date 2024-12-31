@@ -7,6 +7,7 @@ export default {
     extend: {
       backgroundImage: {
         "featured-img": "url('/src/assets/home/featured.jpg')",
+        "login-img": "url('/src/assets/others/authentication.png')",
       },
     },
   },

@@ -1,6 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
   const navLinks = (
     <>
       <li>
@@ -24,7 +26,9 @@ const Navbar = () => {
         <a>Settings</a>
       </li>
       <li>
-        <button className="bg-base-200">Logout</button>
+        <button onClick={logOut} className="bg-base-200">
+          Logout
+        </button>
       </li>
     </>
   );
@@ -71,26 +75,34 @@ const Navbar = () => {
         {/* Navbar End */}
         <div className="navbar-end">
           <div className="flex-none">
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle avatar"
-              >
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="User Avatar"
-                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  />
+            {user ? (
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      alt="User Avatar"
+                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    />
+                  </div>
                 </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  {adminLinks}
+                </ul>
               </div>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-              >
-                {adminLinks}
-              </ul>
-            </div>
+            ) : (
+              <div>
+                <Link to="/login" className="btn">
+                  Login
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
