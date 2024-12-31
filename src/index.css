@@ -8,3 +8,7 @@ html {
   overflow-y: scroll;
   font-family: "Inter", serif;
 }
+
+.control-dots {
+  line-height: 100px;
+}

@@ -6,6 +6,7 @@ import "react-tabs/style/react-tabs.css";
 import useMenuCategory from "../../../hooks/useMenuCategory";
 import OrderTab from "../OrderTab/OrderTab";
 import { useParams } from "react-router-dom";
+import "./Order.css";
 
 const Order = () => {
   const categories = ["salad", "pizza", "soup", "desert", "drink"];

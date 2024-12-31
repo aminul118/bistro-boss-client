@@ -1,0 +1,14 @@
+.react-tabs__tab-list {
+  border-bottom: none;
+
+}
+.react-tabs__tab--selected {
+  border: none;
+  border-bottom:  solid #bb8506;
+  color: #bb8506;
+  font-weight: 800;
+}
+
+.react-tabs__tab:focus:after {
+  border-bottom:  solid #bb8506;
+}

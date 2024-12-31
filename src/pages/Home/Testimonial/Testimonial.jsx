@@ -6,7 +6,7 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { Rating } from "@smastrom/react-rating";
-
+import { BiSolidQuoteSingleLeft } from "react-icons/bi";
 import "@smastrom/react-rating/style.css";
 
 const Testimonial = () => {
@@ -42,6 +42,10 @@ const Testimonial = () => {
                   style={{ maxWidth: 130 }}
                   value={item.rating}
                 />
+                <p className="flex text-5xl justify-center py-4">
+                  <BiSolidQuoteSingleLeft />
+                  <BiSolidQuoteSingleLeft />
+                </p>
                 <p>{item.details}</p>
                 <h3 className="text-3xl text-yellow-500">{item.name}</h3>
               </div>
