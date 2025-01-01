@@ -21,7 +21,9 @@ const Navbar = () => {
   const adminLinks = (
     <>
       <li>
-        <a className="justify-between">Profile</a>
+        <Link to="/dashboard" className="justify-between">
+          Dashboard
+        </Link>
       </li>
       <li>
         <a>Settings</a>
@@ -88,10 +90,7 @@ const Navbar = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="w-10 rounded-full">
-                    <img
-                      alt="User Avatar"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                    />
+                    <img alt="User Avatar" src={user.photoURL} />
                   </div>
                 </div>
                 <ul

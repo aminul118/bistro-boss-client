@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 const Register2 = () => {
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
@@ -14,10 +14,17 @@ const Register2 = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const { email, password } = data;
+    const { email, password, name, photoURL } = data;
     createUser(email, password).then((result) => {
       const user = result.user;
       console.log(user);
+      updateUserProfile(name, photoURL)
+        .then(() => {
+          // Profile Update
+        })
+        .catch((error) => {
+          console.log("ERROR:", error);
+        });
     });
     reset();
   };
@@ -73,6 +80,21 @@ const Register2 = () => {
                 />
                 <p className="text-red-500">
                   {errors.email && <span>* This field is required</span>}
+                </p>
+              </div>
+              {/* Email Field */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="url"
+                  {...register("photoURL", { required: true })}
+                  placeholder="Photo URL"
+                  className="w-full p-3 rounded-lg focus:outline-yellow-500"
+                />
+                <p className="text-red-500">
+                  {errors.photoURL && <span>* This field is required</span>}
                 </p>
               </div>
 
