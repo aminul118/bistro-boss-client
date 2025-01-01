@@ -1,5 +1,24 @@
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
+
 const FoodCard = ({ item }) => {
   const { name, image, price, recipe } = item;
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const email = user.email;
+  const handleAddToCart = async () => {
+    const cartItems = { name, image, price, email };
+    const response = await axiosSecure.post("/carts", cartItems);
+    const data = response.data;
+    if (data) {
+      Swal.fire({
+        title: "Good job!",
+        text: "Product added to the cart!",
+        icon: "success",
+      });
+    }
+  };
   return (
     <div className=" bg-base-200  ">
       <figure className="relative">
@@ -13,7 +32,10 @@ const FoodCard = ({ item }) => {
         <p>{recipe}</p>
 
         <div className="card-actions justify-center">
-          <button className="btn uppercase text-yellow-500 border-b-2 border-yellow-500 border-0 hover:bg-black">
+          <button
+            onClick={handleAddToCart}
+            className="btn uppercase text-yellow-500 border-b-2 border-yellow-500 border-0 hover:bg-black"
+          >
             Add to Cart
           </button>
         </div>
