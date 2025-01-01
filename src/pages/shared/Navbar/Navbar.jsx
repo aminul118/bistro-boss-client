@@ -1,9 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-
+import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../../../hooks/useCart";
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   // console.log(loading);
+  const [cart] = useCart();
+  // console.log(cart);
   const navLinks = (
     <>
       <li>
@@ -14,6 +17,12 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/order/salad">Order Food</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard/cart">
+          <FaCartShopping className="text-white text-xl " />
+          <div className="badge badge-secondary">+{cart?.length}</div>
+        </NavLink>
       </li>
     </>
   );

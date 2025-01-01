@@ -1,22 +1,36 @@
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../../../hooks/useCart";
 
 const FoodCard = ({ item }) => {
-  const { name, image, price, recipe } = item;
+  const { name, image, price, recipe, _id } = item;
+  const navigate = useNavigate();
+  const location = useLocation();
+  // console.log(location);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const email = user.email;
+  const email = user?.email;
+  const [, refetch] = useCart();
   const handleAddToCart = async () => {
-    const cartItems = { name, image, price, email };
-    const response = await axiosSecure.post("/carts", cartItems);
-    const data = response.data;
-    if (data) {
-      Swal.fire({
-        title: "Good job!",
-        text: "Product added to the cart!",
-        icon: "success",
-      });
+    const cartItems = { menuId: _id, name, image, price, email };
+
+    if (email) {
+      // Carts item send to database
+      const response = await axiosSecure.post("/carts", cartItems);
+      const data = response.data;
+      if (data) {
+        Swal.fire({
+          title: "Good job!",
+          text: "Product added to the cart!",
+          icon: "success",
+        });
+        // Updated data load from database
+        refetch();
+      }
+    } else {
+      navigate("/login", { state: location?.pathname, replace: true });
     }
   };
   return (
