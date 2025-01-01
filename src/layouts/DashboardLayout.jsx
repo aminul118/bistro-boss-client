@@ -1,10 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUser } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import useCart from "../hooks/useCart";
 const DashboardLayout = () => {
+  const [cart] = useCart();
   return (
     <div className="flex gap-8 container mx-auto h-screen">
-      <ul className="w-64 bg-red-300 px-10 py-20 space-y-3">
+      <ul className="w-64 bg-red-300 px-10 py-20 space-y-3 menu">
         <li>
           <NavLink to="/dashboard/profile" className="flex items-center gap-3">
             <FaUser /> Profile
@@ -13,7 +15,7 @@ const DashboardLayout = () => {
         <li>
           <NavLink to="/dashboard/cart" className="flex items-center gap-3">
             <FaCartShopping />
-            My Cart
+            My Cart ({cart.length})
           </NavLink>
         </li>
 
