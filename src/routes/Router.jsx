@@ -7,8 +7,12 @@ import Order from "../pages/Order/Order/Order";
 import Login2 from "../pages/Authentication/Login/Login2";
 import Register2 from "../pages/Authentication/Register/Register2";
 import DashboardLayout from "../layouts/DashboardLayout";
-import Profile from "../pages/Dashboard/Profile";
 import Cart from "../pages/Dashboard/Cart";
+import PrivateRoute from "./PrivateRoute";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import AddItems from "../pages/Dashboard/AddItems/AddItems";
+import AdminRoute from "./AdminRoute";
+import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 
 const Router = createBrowserRouter([
   {
@@ -40,15 +44,37 @@ const Router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
-      {
-        path: "profile",
-        element: <Profile />,
-      },
       {
         path: "cart",
         element: <Cart />,
+      },
+      //! Admin routes
+      {
+        path: "manageItems",
+        element: <ManageItems />,
+      },
+      {
+        path: "addItems",
+        element: (
+          <AdminRoute>
+            {" "}
+            <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "allUsers",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
       },
     ],
   },

@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
+import GoogleLogin from "../../shared/GoogleLogin/GoogleLogin";
 
 const Login2 = () => {
   const { login } = useAuth();
@@ -148,6 +149,7 @@ const Login2 = () => {
                 </p>
               </div>
             </form>
+            <GoogleLogin />
           </div>
         </div>
       </section>

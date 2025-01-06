@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom";
 import loginImg from "../../../assets/others/authentication2.png";
 import useAuth from "../../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+import GoogleLogin from "../../shared/GoogleLogin/GoogleLogin";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 const Register2 = () => {
+  const axiosPublic = useAxiosPublic();
+
   const { createUser, updateUserProfile } = useAuth();
   const {
     register,
@@ -15,18 +20,29 @@ const Register2 = () => {
   const onSubmit = (data) => {
     console.log(data);
     const { email, password, name, photoURL } = data;
+    const useInfo = { name, email };
     createUser(email, password).then((result) => {
       const user = result.user;
       console.log(user);
       updateUserProfile(name, photoURL)
         .then(() => {
-          // Profile Update
+          axiosPublic.post("/users", useInfo).then((res) => {
+            if (res.data.insertedId) {
+              // Form reset
+              reset();
+              // Profile Update
+              Swal.fire({
+                title: "Good job!",
+                text: "Profile create successfully.",
+                icon: "success",
+              });
+            }
+          });
         })
         .catch((error) => {
           console.log("ERROR:", error);
         });
     });
-    reset();
   };
 
   return (
@@ -145,6 +161,7 @@ const Register2 = () => {
                 </p>
               </div>
             </form>
+            <GoogleLogin />
           </div>
         </div>
       </section>

@@ -6,13 +6,13 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  console.log(location);
-  console.log(loading);
+  // console.log(location);
+  // console.log(loading);
   if (loading) {
     return <Loading />;
   }
   if (user) {
-    return { children };
+    return children;
   }
   return <Navigate to="/login" state={location?.pathname} replace></Navigate>;
 };
