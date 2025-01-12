@@ -11,7 +11,7 @@ const DashboardLayout = () => {
 
   //  Todo: get is admin from database
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   return (
     <div className="flex gap-8 container mx-auto h-screen">
@@ -20,10 +20,7 @@ const DashboardLayout = () => {
         {isAdmin ? (
           <>
             <li>
-              <NavLink
-                to="/dashboard/adminHome"
-                className="flex items-center gap-3"
-              >
+              <NavLink to="adminHome" className="flex items-center gap-3">
                 <FaHome /> Admin Home
               </NavLink>
             </li>
@@ -56,7 +53,7 @@ const DashboardLayout = () => {
             </li>
             <li>
               <NavLink
-                to="/dashboard/allUsers"
+                to="allUsers"
                 className="flex items-center gap-3"
               >
                 <FaUsers />
